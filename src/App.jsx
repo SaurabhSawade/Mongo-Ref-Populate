@@ -8,23 +8,23 @@ function App() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/posts')
+    axios.get('https://mongo-ref-populate-backend.onrender.com/posts')
       .then(res => setPosts(res.data));
 
-    axios.get('http://localhost:4000/users')
+    axios.get('https://mongo-ref-populate-backend.onrender.com/users')
       .then(res => setUsers(res.data));
   }, []);
 
   const handleUserSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post('http://localhost:4000/users', userForm);
+    const res = await axios.post('https://mongo-ref-populate-backend.onrender.com/users', userForm);
     setUsers([...users, res.data]);
     setUserForm({ name: '', email: '' });
   };
 
   const handlePostSubmit = async (e) => {
     e.preventDefault();
-    const res = await axios.post('http://localhost:4000/posts', postForm);
+    const res = await axios.post('https://mongo-ref-populate-backend.onrender.com/posts', postForm);
     setPosts([...posts, res.data]);
     setPostForm({ title: '', content: '', user: '' });
   };
